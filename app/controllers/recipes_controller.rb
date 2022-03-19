@@ -3,9 +3,15 @@ class RecipesController < ApplicationController
     end
 
     def index
+        if params[:user_id]
+            @recipes = User.find(params[:user_id]).recipes
+          else
+            @recipes = Recipe.all
+          end
     end
 
     def show
+        @recipe = Recipe.find(params[:id])
     end
   
     # def create

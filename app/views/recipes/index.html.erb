@@ -1,0 +1,10 @@
+<h1>Hello there, <%= @user.name %></h1>
+<h2>Here are all your recipes</h2>
+
+<% @recipes.each do |post| %>
+    <div>
+      <h2><%= post.name %></h2>
+      <h3>Procedure</h3>
+      <p> <%= post.procedure %></p>
+    </div>
+  <% end %>
