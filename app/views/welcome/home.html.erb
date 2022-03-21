@@ -1,6 +1,11 @@
 <h1>Hi, <%= @user.name %></h1>
+
+<h2><%= link_to "Create New Recipe", new_user_recipe_path(@user)%></h2>
+
+<h2><%= link_to "Your Recipes", user_recipes_path(@user)%></h2>
+
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
 
-<h2><%= link_to "Your Recipes", user_recipes_path(@user)%></h2>
+

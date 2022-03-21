@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.datetime "updated_at"
   end
 
-  create_table "recipes_ingredients", force: :cascade do |t|
+  create_table "recipes_ingredients", id: false, force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "ingredient_id"
   end
