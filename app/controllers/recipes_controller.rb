@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
     def new
+      @recipe = Recipe.new(user_id: params[:user_id])
     end
 
     def index
@@ -15,15 +16,21 @@ class RecipesController < ApplicationController
     end
   
     # def create
-    #   @user = User.create(user_params)
-    #   return redirect_to controller: 'users', action: 'new' unless @user.save
+    #   @recipe = Recipe.create(user_params)
+    #   return redirect_to controller: 'recipes', action: 'new' unless @recipe.save
     #   session[:user_id] = @user.id
-    #   redirect_to controller: 'welcome', action: 'home'
+    #   redirect_to controller: 'recipe', action: 'index'
     # end
+    
+    def update
+        @recipe = Recipe.find(params[:id])
+        @recipe.update(recipe_params)
+        redirect_to recipe_path(@post)
+      end
+
+    private
   
-    # private
-  
-    # def user_params
-    #   params.require(:user).permit(:name, :password, :password_confirmation)
-    # end
+    def recipe_params
+      params.require(:recipe).permit(:name, :procedure, :user_id)
+    end
   end

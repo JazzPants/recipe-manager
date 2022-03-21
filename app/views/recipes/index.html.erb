@@ -1,11 +1,10 @@
 <h1>Hello there, <%= @user.name %></h1>
 <h2>Here are all your recipes</h2>
 
-<% @recipes.each do |recipe| %>
+<% @user.recipes.each_with_index do |recipe, index| %>
     <div>
-      <h2><%= recipe.name %></h2>
-      <h3>Procedure</h3>
-      <p> <%= recipe.procedure %></p>
+      <h3><%=index+1%>. <%= recipe.name %></h3>
+
     </div>
   <% end %>
 
