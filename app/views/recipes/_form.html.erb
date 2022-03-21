@@ -1,7 +1,8 @@
-<label>Recipe title:</label><br>
-<%= text_field_tag :title, @recipe.title %><br>
+<label>Recipe name:</label><br>
 
-<label>Recipe Procedure</label><br>
+<%= text_field_tag :name, @recipe.name %><br>
+
+<label>Recipe Procedure:</label><br>
 <%= text_area_tag :procedure, @recipe.procedure %><br>
 
 <%= submit_tag "Submit Recipe" %>

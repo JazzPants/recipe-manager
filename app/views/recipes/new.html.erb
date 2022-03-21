@@ -1,3 +1,8 @@
 <h1>Create A New Recipe!</h1>
 
+<%= form_tag recipes_path do %>
+
+    <%= render "form" %>
+    <% end %>
+
 <h2><%= link_to "Homepage", root_path(@user)%></h2>

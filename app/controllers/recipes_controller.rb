@@ -14,13 +14,12 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find(params[:id])
     end
-  
-    # def create
-    #   @recipe = Recipe.create(user_params)
-    #   return redirect_to controller: 'recipes', action: 'new' unless @recipe.save
-    #   session[:user_id] = @user.id
-    #   redirect_to controller: 'recipe', action: 'index'
-    # end
+
+    def create
+      @recipe = Recipe.new(recipe_params)
+      @recipe.save
+      redirect_to recipe_path(@recipe)
+    end
     
     def update
         @recipe = Recipe.find(params[:id])
