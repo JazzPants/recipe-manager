@@ -1,9 +1,10 @@
 <h1>Hello there, <%= @user.name %></h1>
 <h2>Here are all your recipes</h2>
 
-<% @user.recipes.each_with_index do |recipe, index| %>
+<% @recipes.each_with_index do |recipe, index| %>
     <div>
       <h3><%=index+1%>. <%= recipe.name %></h3>
+      <p><%= link_to "Recipe details", user_recipe_path(@user, recipe)%></p>
 
     </div>
   <% end %>

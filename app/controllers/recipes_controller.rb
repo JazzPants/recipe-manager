@@ -17,14 +17,17 @@ class RecipesController < ApplicationController
 
     def create
       @recipe = Recipe.new(recipe_params)
-      @recipe.save
+      if @recipe.save
       redirect_to recipe_path(@recipe)
+      else
+        render :new
+      end
     end
     
     def update
         @recipe = Recipe.find(params[:id])
         @recipe.update(recipe_params)
-        redirect_to recipe_path(@post)
+        redirect_to root_path(@user)
       end
 
     private

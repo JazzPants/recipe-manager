@@ -1,8 +1,10 @@
-<label>Recipe name:</label><br>
+<%= form_for [@user, @recipe] do |f| %>
+    <label>Recipe name:</label><br>
 
-<%= text_field_tag :name, @recipe.name %><br>
+    <%= f.hidden_field :user_id %>
 
-<label>Recipe Procedure:</label><br>
-<%= text_area_tag :procedure, @recipe.procedure %><br>
-
-<%= submit_tag "Submit Recipe" %>
+    <%= f.text_field :name %><br>
+    <label>Recipe Procedure</label><br>
+    <%= f.text_area :procedure %><br>
+    <%= f.submit%>
+  <% end %>
