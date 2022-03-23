@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 6) do
     t.string "name"
   end
 
+  create_table "ingredients_recipes", id: false, force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "recipe_id"
+    t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id", unique: true
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.integer "rating"
     t.integer "user_id"
@@ -38,11 +44,6 @@ ActiveRecord::Schema.define(version: 6) do
     t.datetime "updated_at"
   end
 
-  create_table "recipes_ingredients", id: false, force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -51,8 +52,8 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "ingredients_recipes", "ingredients"
+  add_foreign_key "ingredients_recipes", "recipes"
   add_foreign_key "ratings", "users"
   add_foreign_key "recipes", "users"
-  add_foreign_key "recipes_ingredients", "ingredients"
-  add_foreign_key "recipes_ingredients", "recipes"
 end

@@ -5,9 +5,15 @@
     <div>
       <h3><%=index+1%>. <%= recipe.name %></h3>
       <p><%= link_to "Recipe details", user_recipe_path(@user, recipe)%></p>
-
+      <%= button_to "Delete Recipe", user_recipe_path(@user, recipe), method: :delete %>
     </div>
   <% end %>
+<br>
 
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
 
   <h3><%= link_to "Homepage", root_path(@user)%></h3>

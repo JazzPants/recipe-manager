@@ -1,10 +1,14 @@
 <%= form_for [@user, @recipe] do |f| %>
-    <label>Recipe name:</label><br>
-
+    
     <%= f.hidden_field :user_id %>
 
+    <label>Recipe name:</label><br>
     <%= f.text_field :name %><br>
-    <label>Recipe Procedure</label><br>
+
+    <label>Ingredients:</label><br>
+    <%= f.text_field :ingredient_ids %><br>
+
+    <label>Recipe Procedure:</label><br>
     <%= f.text_area :procedure %><br>
     <%= f.submit%>
   <% end %>
