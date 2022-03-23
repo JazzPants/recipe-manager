@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 6) do
   create_table "ingredients_recipes", id: false, force: :cascade do |t|
     t.integer "ingredient_id"
     t.integer "recipe_id"
-    t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id", unique: true
   end
 
   create_table "ratings", force: :cascade do |t|
