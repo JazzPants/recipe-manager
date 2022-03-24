@@ -3,6 +3,11 @@
     <div>
       <h3><%= @recipe.title %></h3>
       <h4>Ingredients</h4>
+          <ul>
+            <% @recipe.ingredients.each do |ingredient| %>
+              <li><%= "#{ingredient.name} X #{ingredient.quantity}" %></li>
+            <% end %>
+          </ul>
 
       <h4>Procedure</h4>
       <p><%= @recipe.procedure %></p>

@@ -33,6 +33,4 @@ ActiveRecord::Schema.define(version: 3) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "ingredients", "recipes"
-  add_foreign_key "recipes", "users"
 end

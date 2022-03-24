@@ -5,8 +5,13 @@
     <%= f.text_field :title%><br><br>
 
     <label>Add Ingredients:</label><br>
-    <p>Current Ingredients:</p>
-
+    <%= f.fields_for :ingredients do |inner_form| %>
+      <%= inner_form.label :name %>
+      <%= inner_form.text_field :name %><br/>
+  
+      <%= inner_form.label :quantity %>
+      <%= inner_form.text_field :quantity %><br/>
+    <% end %>
 
     <label>Recipe Procedure:</label><br>
     <%= f.text_area :procedure %><br>
