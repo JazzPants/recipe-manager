@@ -13,20 +13,20 @@ class RecipesController < ApplicationController
     def create
       @recipe = Recipe.new(recipe_params)
       if @recipe.save
-      redirect_to root_path(@recipe)
+      redirect_to root_path(@user)
       else
         render :new
       end
     end
 
     def edit
-      @recipe = Recipe.find(params[:user_id])
+      @recipe = Recipe.find(params[:id])
     end
         
     def update
-      @recipe = Recipe.find(params[:user_id])
+      @recipe = Recipe.find(params[:id])
       @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      redirect_to user_recipe_path(@user)
     end
 
     def index
@@ -43,8 +43,6 @@ class RecipesController < ApplicationController
 
       def destroy
         @recipe = Recipe.find(params[:id])
-        @ingredients = Ingredient.where(user_id: params[:user_id])
-        @ingredients.destroy
         @recipe.destroy
         flash[:notice] = "Recipe '#{@recipe.title}' deleted."
         puts "Recipe deleted!"
@@ -54,7 +52,7 @@ class RecipesController < ApplicationController
     private
   
     def recipe_params
-      params.require(:recipe).permit(:title, :procedure, :user_id, ingredients_attributes: [:name, :quantity])
+      params.require(:recipe).permit(:title, :procedure, :user_id, ingredients_attributes: [:id, :name, :quantity])
     end
 
   end
