@@ -5,7 +5,7 @@
 <h2>Here are all your recipes</h2>
 <% @recipes.each_with_index do |recipe, index| %>
   <div>
-    <h3><%=index+1%>. <%= recipe.name %></h3>
+    <h3><%=index+1%>. <%= recipe.title %></h3>
     <p><%= link_to "Recipe details", user_recipe_path(@user, recipe)%></p>
     <%= button_to "Delete Recipe", user_recipe_path(@user, recipe), method: :delete %>
   </div>
@@ -18,7 +18,7 @@
     <% end %>
 <h2>Here are all user recipes</h2>
 <% @recipes.each do |recipe| %>
-  <p><%= recipe.name %></p>
+  <p><%= recipe.title %></p>
   <% end %>
 <% end %>
 

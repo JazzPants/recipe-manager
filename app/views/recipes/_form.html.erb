@@ -1,17 +1,11 @@
 <%= form_for [@user, @recipe] do |f| %>
     <%= f.hidden_field :user_id %>
 
-    <label>Recipe name:</label><br>
-    <%= f.text_field :name %><br><br>
+    <label>Recipe title:</label><br>
+    <%= f.text_field :title%><br><br>
 
     <label>Add Ingredients:</label><br>
-    <%= f.text_field :ingredients %><br>
     <p>Current Ingredients:</p>
-    <% @ingredientsList.each_with_index do |ingredient, index| %>
-      <div>
-        <p><%=index+1%>. <%= ingredient %></p>
-      </div>
-    <% end %>
 
 
     <label>Recipe Procedure:</label><br>

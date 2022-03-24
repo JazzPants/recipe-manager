@@ -1,13 +1,9 @@
 <h1>Recipe </h1>
 
     <div>
-      <h3><%= @recipe.name %></h3>
+      <h3><%= @recipe.title %></h3>
       <h4>Ingredients</h4>
-      <% @ingredientsList.each_with_index do |ingredient, index| %>
-        <div>
-          <p><%=index+1%>. <%= ingredient %></p>
-        </div>
-      <% end %>
+
       <h4>Procedure</h4>
       <p><%= @recipe.procedure %></p>
       <p><%= link_to "Edit Recipe", edit_user_recipe_path(@user)%></p>

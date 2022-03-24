@@ -5,14 +5,11 @@ class RecipesController < ApplicationController
         redirect_to new_user_recipe_path(@user)
       else
         @recipe = Recipe.new(user_id: params[:user_id])
-        @ingredient = Ingredient.new(name: params[:name])
-        ingredientsList
       end
 
     end
 
     def edit
-      ingredientsList
       @recipe = Recipe.find(params[:id])
     end
 
@@ -25,14 +22,11 @@ class RecipesController < ApplicationController
     end
 
     def show
-        ingredientsList
         @recipe = Recipe.find(params[:id])
     end
 
     def create
       @recipe = Recipe.new(recipe_params)
-      # @ingredient = Ingredient.new(ingredient_params)
-      #  && @ingredient.save
       if @recipe.save
       redirect_to recipe_path(@recipe)
       else
@@ -51,7 +45,7 @@ class RecipesController < ApplicationController
       def destroy
         @recipe = Recipe.find(params[:id])
         @recipe.destroy
-        flash[:notice] = "Recipe '#{@recipe.name}' deleted."
+        flash[:notice] = "Recipe '#{@recipe.title}' deleted."
         puts "Recipe deleted!"
         redirect_to user_recipes_path(@user)
       end
@@ -59,20 +53,7 @@ class RecipesController < ApplicationController
     private
   
     def recipe_params
-      params.require(:recipe).permit(:name, :procedure, :user_id, :ingredient_name)
+      params.require(:recipe).permit(:title, :procedure, :user_id)
     end
-
-    # def ingredient_params
-    #   params.require(:ingredient).permit(:name)
-    # end
-
-    def ingredientsList
-      @ingredientsList = []
-      ingredientsJoin = IngredientsRecipes.all.where(recipe_id: params[:id])    
-      ingredientsJoin.each do |i|
-        @ingredientsList << Ingredient.find_by(id: i.ingredient_id).name
-      end
-    end
-
 
   end
