@@ -31,8 +31,9 @@ class RecipesController < ApplicationController
 
     def create
       @recipe = Recipe.new(recipe_params)
-      @ingredient = Ingredient.new(ingredient_params)
-      if @recipe.save && @ingredient.save
+      # @ingredient = Ingredient.new(ingredient_params)
+      #  && @ingredient.save
+      if @recipe.save
       redirect_to recipe_path(@recipe)
       else
         render :new
@@ -61,9 +62,9 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(:name, :procedure, :user_id, :ingredient_name)
     end
 
-    def ingredient_params
-      params.require(:ingredient).permit(:name)
-    end
+    # def ingredient_params
+    #   params.require(:ingredient).permit(:name)
+    # end
 
     def ingredientsList
       @ingredientsList = []

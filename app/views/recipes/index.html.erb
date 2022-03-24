@@ -1,13 +1,27 @@
+
+
+<% if params[:user_id] %>
 <h1>Hello there, <%= @user.name %></h1>
 <h2>Here are all your recipes</h2>
-
 <% @recipes.each_with_index do |recipe, index| %>
-    <div>
-      <h3><%=index+1%>. <%= recipe.name %></h3>
-      <p><%= link_to "Recipe details", user_recipe_path(@user, recipe)%></p>
-      <%= button_to "Delete Recipe", user_recipe_path(@user, recipe), method: :delete %>
-    </div>
+  <div>
+    <h3><%=index+1%>. <%= recipe.name %></h3>
+    <p><%= link_to "Recipe details", user_recipe_path(@user, recipe)%></p>
+    <%= button_to "Delete Recipe", user_recipe_path(@user, recipe), method: :delete %>
+  </div>
+<% end %>
+<% else %>
+    <% if @user.name %>
+    <h1>Hello there, <%= @user.name %>.</h1>
+    <% else %>
+    <h1>Hello there, Guest.</h1>
+    <% end %>
+<h2>Here are all user recipes</h2>
+<% @recipes.each do |recipe| %>
+  <p><%= recipe.name %></p>
   <% end %>
+<% end %>
+
 <br>
 
   <% flash.each do |type, msg| %>
