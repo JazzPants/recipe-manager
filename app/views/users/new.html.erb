@@ -8,3 +8,20 @@
   <%= f.password_field :password_confirmation %><br>
   <%= f.submit "Create" %>
 <% end %>
+
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@user.errors.count, "error") %>
+    prohibited this user from being saved:
+  </h2>
+
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %>.</li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<h3><%= link_to "Homepage", root_path%></h3>
