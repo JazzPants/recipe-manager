@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
     end
 
     def recent_recipe
-
+      @recipe = Recipe.order("created_at").last
     end
 
       def destroy

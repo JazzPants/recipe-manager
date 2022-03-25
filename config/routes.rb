@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get '/recipes/recent_recipe' => 'recipes#recent_recipe'
   resources :recipes, only: [:index, :show]
   resources :users, only: [:new, :create] do
     resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy]
